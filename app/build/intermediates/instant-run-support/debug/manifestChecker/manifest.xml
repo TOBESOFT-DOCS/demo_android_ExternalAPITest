@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nexacro.ExternalAPITest"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="8"
+        android:targetSdkVersion="8" />
+
+    <application
+        android:debuggable="true"
+        android:icon="@drawable/ic_launcher"
+        android:label="@string/app_name"
+        android:testOnly="true" >
+
+        <!-- 액티비티 설정 -->
+        <activity
+            android:name="com.nexacro.ExternalAPITest.ExternalAPITestActivity"
+            android:label="@string/app_name" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <!-- 브로드캐스트 리시버와 인텐트 필터 설정 -->
+        <receiver
+            android:name="com.nexacro.ExternalAPITest.ExternalAPIReceiver"
+            android:enabled="true" >
+            <intent-filter>
+                <action android:name="com.nexacro.ExternalAPITest.extAPI" />
+            </intent-filter>
+        </receiver>
+
+        <provider
+            android:name="com.android.tools.ir.server.InstantRunContentProvider"
+            android:authorities="com.nexacro.ExternalAPITest.com.android.tools.ir.server.InstantRunContentProvider"
+            android:multiprocess="true" />
+    </application>
+
+</manifest>
